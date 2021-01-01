@@ -31,9 +31,21 @@ pub struct Overview {
 
 #[derive(serde::Serialize, serde::Deserialize)]
 #[serde(rename_all = "camelCase")]
-pub struct Details {
+pub struct Field {
+    pub designation: String,
+    pub name: String,
+    pub r#type: String,
+    pub value: String,
+}
+
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "camelCase")]
+pub struct Detail {
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub fields: Option<Vec<Field>>,
     pub notes_plain: String,
-    pub password: String,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub password: Option<String>,
     pub password_history: Vec<PasswordHistory>,
     pub sections: Vec<Section>,
 }
@@ -51,7 +63,7 @@ pub struct Item {
     pub vault_uuid: String,
     pub overview: Overview,
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub details: Option<Details>,
+    pub details: Option<Detail>,
 }
 
 #[derive(serde::Serialize, serde::Deserialize)]

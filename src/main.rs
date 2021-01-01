@@ -82,7 +82,17 @@ fn main() {
                         match op.get(&name) {
                             Ok(item) => {
                                 if let Some(details) = item.details {
-                                    println!("{}={}", env_name, details.password);
+                                    if let Some(password) = details.password {
+                                        println!("{}={}", env_name, password);
+                                    }
+
+                                    if let Some(fields) = details.fields {
+                                        for i in fields {
+                                            if i.r#type == "P" {
+                                                println!("{}={}", env_name, i.value);
+                                            }
+                                        }
+                                    }
                                 }
                             }
                             Err(e) => {
@@ -98,7 +108,17 @@ fn main() {
                             match op.get(&name) {
                                 Ok(item) => {
                                     if let Some(details) = item.details {
-                                        println!("{}={}", name, details.password);
+                                        if let Some(password) = details.password {
+                                            println!("{}={}", name, password);
+                                        }
+
+                                        if let Some(fields) = details.fields {
+                                            for i in fields {
+                                                if i.r#type == "P" {
+                                                    println!("{}={}", name, i.value);
+                                                }
+                                            }
+                                        }
                                     }
                                 }
                                 Err(e) => {
