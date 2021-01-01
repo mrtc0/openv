@@ -40,7 +40,11 @@ struct List {}
 
 #[derive(Clap)]
 struct Get {
-    #[clap(short, multiple = true, about = "Specify an item name one or more in the vault.\nAble to specify environment variable names by separating them with a `:`.\ne.g. `-n item-name -n item-name2` or `-n item-name:MY_ENV`")]
+    #[clap(
+        short,
+        multiple = true,
+        about = "Specify an item name one or more in the vault.\nAble to specify environment variable names by separating them with a `:`.\ne.g. `-n item-name -n item-name2` or `-n item-name:MY_ENV`"
+    )]
     name: Option<Vec<String>>,
 }
 
