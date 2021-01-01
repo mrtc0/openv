@@ -13,6 +13,7 @@ use crate::op::OnePassword;
 #[derive(Clap)]
 #[clap(version = "0.1", author = "mrtc0")]
 struct Opts {
+    #[clap(about = "vault name in 1password")]
     vault: String,
     #[clap(subcommand)]
     subcmd: SubCommand,
@@ -21,8 +22,11 @@ struct Opts {
 #[derive(Clap)]
 enum SubCommand {
     #[clap(version = "0.1", author = "mrtc0")]
+    #[clap(about = "Create an item and save it as a Password category in specified vault.")]
     Create(Create),
+    #[clap(about = "List for all items in specified vault.")]
     List(List),
+    #[clap(about = "Get for specified items in specified vault.")]
     Get(Get),
 }
 
@@ -36,7 +40,7 @@ struct List {}
 
 #[derive(Clap)]
 struct Get {
-    #[clap(short, multiple = true)]
+    #[clap(short, multiple = true, about = "Specify an item name one or more in the vault.\nAble to specify environment variable names by separating them with a `:`.\ne.g. `-n item-name -n item-name2` or `-n item-name:MY_ENV`")]
     name: Option<Vec<String>>,
 }
 
