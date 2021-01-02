@@ -1,3 +1,4 @@
+extern crate base64_url;
 extern crate serde;
 
 use std::collections::BTreeMap as Map;
@@ -69,7 +70,7 @@ pub struct Item {
 #[derive(serde::Serialize, serde::Deserialize)]
 #[serde(rename_all = "camelCase")]
 struct Password {
-    note_plain: String,
+    notes_plain: String,
     password: String,
     password_history: Vec<PasswordHistory>,
     sections: Vec<Section>,
@@ -77,14 +78,14 @@ struct Password {
 
 pub fn encode_password(password: &str) -> Result<String, String> {
     let s = Password {
-        note_plain: "".to_string(),
+        notes_plain: "".to_string(),
         password: password.to_string(),
         password_history: vec![],
         sections: vec![],
     };
 
     match serde_json::to_string(&s) {
-        Ok(j) => Ok(base64::encode(j.as_bytes())),
+        Ok(j) => Ok(base64_url::encode(j.as_bytes())),
         Err(err) => return Err(format!("{}", err)),
     }
 }
@@ -96,7 +97,7 @@ mod tests {
     #[test]
     fn test_encode_password() {
         let s = "password";
-        let expect: Result<String, String> = Ok("eyJub3RlUGxhaW4iOiIiLCJwYXNzd29yZCI6InBhc3N3b3JkIiwicGFzc3dvcmRIaXN0b3J5IjpbXSwic2VjdGlvbnMiOltdfQ==".to_string());
+        let expect: Result<String, String> = Ok("eyJub3Rlc1BsYWluIjoiIiwicGFzc3dvcmQiOiJwYXNzd29yZCIsInBhc3N3b3JkSGlzdG9yeSI6W10sInNlY3Rpb25zIjpbXX0".to_string());
         assert_eq!(encode_password(&s), expect,);
     }
 }
