@@ -9,20 +9,37 @@ A tool that uses the credentials stored in 1password as an environment variable.
 # Getting Started
 
 ```shell
+# Sign in to 1password. e.g. `op signin my`.
 $ eval $(op signin <sign_in_address>)
+
+# Create vault in 1password.
 $ op create vault myenv
 
-$ openv create myenv SECRET_TOKEN
-myenv.SECRET_TOKEN> this-is-secret
 
-$ openv list myenv
+# openv can register credentials to 1password vault.
+$ openv myenv create SECRET_TOKEN
+myenv.SECRET_TOKEN> this-is-token
+
+$ openv myenv create HIDDEN_TOKEN
+myenv.HIDDEN_TOKEN > this-is-hidden
+
+# List credentials for the specified vault.
+$ openv myenv list
+HIDDEN_TOKEN
 SECRET_TOKEN
 
-$ env $(openv myenv get) sh -c 'echo $SECRET_TOKEN'
-this-is-secret
+# All credentials in vault can be set as environment variables with the `get` command
+$ env $(openv myenv get) sh -c 'env | grep TOKEN'
+SECRET_TOKEN=this-is-token
+HIDDEN_TOKEN=this-is-hidden
 
+# With the `-n` option, specify the credentials in vault.
+# Also by separating item name with a colon, specify environment variable name.
 $ env $(openv myenv get -n SECRET_TOKEN:MY_ENV) sh -c 'echo $MY_ENV'
-this-is-secret
+this-is-token
+
+> env $(openv myenv get -n SECRET_TOKEN:MY_ENV -n HIDDEN_TOKEN) sh -c 'echo $MY_ENV $HIDDEN_TOKEN'
+this-is-token this-is-hidden
 ```
 
 # Install
