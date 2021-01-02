@@ -218,6 +218,7 @@ dependencies = [
  "clap",
  "mockall",
  "serde",
+ "serde_derive",
  "serde_json",
 ]
 
