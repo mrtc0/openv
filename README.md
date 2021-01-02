@@ -29,7 +29,10 @@ this-is-secret
 
 ### On macOS via Homebrew
 
-TBD
+```shell
+$ brew tap mrtc0/openv
+$ brew instlal openv
+```
 
 ### From binaries
 
@@ -37,7 +40,9 @@ Check out the [release page](https://github.com/mrtc0/openv/releases) for prebui
 
 ### From source
 
-TBD
+```shell
+$ cargo install openv
+```
 
 # Development
 
