@@ -5,6 +5,7 @@ authors = ["Kohei Morita <mrtc0@ssrf.in>"]
 edition = "2018"
 homepage = "https://github.com/mrtc0/openv"
 license = "Apache-2.0"
+description = "A tool that uses the credentials stored in 1password as an environment variable."
 
 [dependencies]
 anyhow = "1.0.37"
