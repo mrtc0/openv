@@ -10,8 +10,10 @@ use std::str;
 
 use crate::op::OnePassword;
 
+const VERSION: &str = "0.1.0";
+
 #[derive(Clap)]
-#[clap(version = "0.1", author = "mrtc0")]
+#[clap(version = VERSION, author = "mrtc0")]
 struct Opts {
     #[clap(about = "vault name in 1password")]
     vault: String,
@@ -21,7 +23,7 @@ struct Opts {
 
 #[derive(Clap)]
 enum SubCommand {
-    #[clap(version = "0.1", author = "mrtc0")]
+    #[clap(version = VERSION, author = "mrtc0")]
     #[clap(about = "Create an item and save it as a Password category in specified vault.")]
     Create(Create),
     #[clap(about = "List for all items in specified vault.")]
