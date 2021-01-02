@@ -22,11 +22,6 @@ jobs:
   
       steps:
         - uses: actions/checkout@v1
-        - name: Cache cargo build
-          uses: actions/cache@v1
-          with:
-            path: target
-            key: ${{ runner.os }}-cargo-build-target-${{ hashFiles('**/Cargo.lock') }}
         - uses: actions-rs/toolchain@v1
           with:
             toolchain: stable
@@ -38,3 +33,8 @@ jobs:
         - uses: actions-rs/cargo@v1.0.1
           with:
             command: test
+        - name: Cache cargo build
+          uses: actions-rs/cargo@v1.0.1
+          with:
+            path: target
+            key: ${{ runner.os }}-cargo-build-target-${{ hashFiles('**/Cargo.lock') }}
