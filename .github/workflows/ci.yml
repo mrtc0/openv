@@ -36,5 +36,6 @@ jobs:
         - name: Cache cargo build
           uses: actions-rs/cargo@v1.0.1
           with:
+            command: build
             path: target
             key: ${{ runner.os }}-cargo-build-target-${{ hashFiles('**/Cargo.lock') }}
