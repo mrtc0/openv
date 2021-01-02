@@ -61,6 +61,10 @@ Check out the [release page](https://github.com/mrtc0/openv/releases) for prebui
 $ cargo install openv
 ```
 
+## Completion
+
+If you are using fish, you can use https://github.com/mrtc0/fish-openv-completions .
+
 # Development
 
 ```shell
