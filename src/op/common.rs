@@ -23,8 +23,10 @@ pub struct Section {
 pub struct Overview {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub urls: Option<Vec<Map<String, String>>>,
-    pub ainfo: String,
-    pub ps: u32,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub ainfo: Option<String>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub ps: Option<u32>,
     pub title: String,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub url: Option<String>,
