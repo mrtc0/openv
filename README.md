@@ -48,7 +48,7 @@ this-is-token this-is-hidden
 
 ```shell
 $ brew tap mrtc0/openv
-$ brew instlal openv
+$ brew install openv
 ```
 
 ### From binaries
