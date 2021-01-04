@@ -10,7 +10,7 @@ use std::str;
 
 use crate::op::OnePassword;
 
-const VERSION: &str = "0.1.1";
+const VERSION: &str = "0.1.2";
 
 #[derive(Clap)]
 #[clap(version = VERSION, author = "mrtc0")]
