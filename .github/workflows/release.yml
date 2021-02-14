@@ -40,7 +40,7 @@ jobs:
           use-cross: true
       - run: |
           zip --junk-paths openv-${{ matrix.target }} target/${{ matrix.target }}/release/openv{,.exe}
-      - uses: actions/upload-artifact@v1
+      - uses: actions/upload-artifact@v2
         with:
           name: build-${{ matrix.target }}
           path: openv-${{ matrix.target }}.zip
@@ -60,7 +60,7 @@ jobs:
           prerelease: false
       - run: |
           echo '${{ steps.create-release.outputs.upload_url }}' > release_upload_url.txt
-      - uses: actions/upload-artifact@v1
+      - uses: actions/upload-artifact@v2
         with:
           name: create-release
           path: release_upload_url.txt
