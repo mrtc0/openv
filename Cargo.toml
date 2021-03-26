@@ -8,7 +8,7 @@ license = "Apache-2.0"
 description = "A tool that uses the credentials stored in 1password as an environment variable."
 
 [dependencies]
-anyhow = "1.0.37"
+anyhow = "1.0.40"
 base64 = "0.13.0"
 base64-url = "1.4.8"
 clap = "3.0.0-beta.2"
